@@ -1,0 +1,10 @@
+Il suffit de se placer dans le dossier tatouage/build/
+
+faire un:
+cmake ..
+
+dans ce même dossier, faire un:
+
+make
+
+Les exécutables sont dans tatouage/bin/
