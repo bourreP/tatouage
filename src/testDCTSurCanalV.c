@@ -6,6 +6,8 @@
 #include "dct.h"
 #include "matrix.h"
 
+//Test
+
 int main (int argc, char ** argv)
 {
 	const char *fileName = "./lena.jpg";
