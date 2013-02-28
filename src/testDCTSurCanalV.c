@@ -10,7 +10,7 @@
 
 int main (int argc, char ** argv)
 {
-	const char *fileName = "./lena.jpg";
+	const char *fileName = "../Images/lena.jpg";
 
 	double** V;
 	double** VDCT;
