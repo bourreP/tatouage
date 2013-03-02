@@ -27,9 +27,9 @@ int main (int argc, char ** argv)
   IplImage* src = cvLoadImage ( fileName, 3);
   IplImage* dct = cvCreateImage ( cvGetSize(src) , src->depth, src->nChannels);
   IplImage* img = cvCreateImage( cvGetSize(src), src->depth, 1);
-  IplImage* img2 = cvCreateImage( cvGetSize(src), src->depth, 1);
 
   cvCvtColor (src, dct, CV_BGR2HSV);
+  //cvSmooth(img,img,CV_GAUSSIAN,5,0,0,0);
 
   /**
      On va travailler sur le canal V
@@ -85,9 +85,9 @@ int main (int argc, char ** argv)
 	
   //On met le VDCT comprenant le canal V (et seulement celui-ci) après transformation DCT dans le canal 0 de img
 
-  for (i = ((src->width)/N); i < src->width; i++)
+  for (i = 0; i < src->width; i++)
     {
-      for (j = ((src->height)/N); j < src->height; j++)
+      for (j = 0; j < src->height; j++)
 	{
 	  s_img = cvGet2D(img,i,j);
 	  s_img.val[0] = VDCT[i][j];
@@ -95,7 +95,19 @@ int main (int argc, char ** argv)
 	}
     }
 
-  //On réinjecte les pixels de img dans V ( en 512x512 )
+  //On met à 0 le bloc supérieur gauche
+
+  for (i = 0; i < ((src->width)/N); i++)
+    {
+      for (j = 0; j < ((src->height)/N); j++)
+	{
+	  s_img = cvGet2D(img,i,j);
+	  s_img.val[0] = 0;
+	  cvSet2D(img, i, j, s_img);
+	}
+    }
+ 
+   //On réinjecte les pixels de img dans V ( en 512x512 )
 
   for (i = 0; i < src->width; i++)
     {
@@ -121,13 +133,13 @@ int main (int argc, char ** argv)
 	  cvSet2D(img, i, j, s_img);
 	}
     }
-
+  
   //On affiche puis enregistre
 
   cvNamedWindow("YUV", CV_WINDOW_AUTOSIZE);
   cvShowImage("YUV", img);
   cvWaitKey(0);
-  cvSaveImage(argv[2],img,NULL);
+  //  cvSaveImage(argv[2],img,NULL);
   cvDestroyAllWindows();
 
   return EXIT_SUCCESS;
