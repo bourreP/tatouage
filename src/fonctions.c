@@ -23,7 +23,7 @@ void extractionBloc (double **Mat, int posx, int posy,int N,double **bloc){
 
 /** Réinsertion d'un bloc tatoué dans la matrice **/
 
-void insertionBloc ( double **bloc, int posx, int posy, int N, double **Mat,CvScalar s ){
+void insertionBloc ( double **bloc, int posx, int posy, int N, double **Mat ){
 
   int i,j;
 
@@ -56,7 +56,8 @@ void extractionCanalV (double **Mat, IplImage *imgHSV, int N) {
 void insertion ( double **blocT, int N, int pas, float a,double key,int mes){
 
   int i,j;
-  float proj,proj2;
+  float proj=0;
+  float proj2=0;
   float q,Q;
   float deux =2;
   float w;
@@ -68,21 +69,51 @@ void insertion ( double **blocT, int N, int pas, float a,double key,int mes){
   };
   float Norme_masque=44.8071;
   int mes2;
+  double **blocT2;
+  float aux;
+  blocT2=alocamd(N,N);
+
+  for (i=0;i<N;i++){                // Copie de blocT dans blocT2
+    for (j=0;j<N;j++){
+      blocT2[i][j]=blocT[i][j];
+      //      printf("%f ", blocT2[i][j]);
+    }
+    //    printf("\n");
+  }
+  //  printf("\n");
+
+  for (i=0;i<N;i++){               // Transposée de blocT
+    for(j=0;j<N;j++){
+
+      aux=blocT[i][j];
+      blocT[i][j]=blocT[j][i];
+      blocT[j][i]=aux;
+      //      printf("%f ",blocT[i][j]); 
+    }
+    //    printf("\n");
+  }
+  //  printf("\n");
 
   for (i=0;i<N;i++){
     for (j=0;j<N;j++){
       proj+=blocT[i][j]*masque_t[i][j]/Norme_masque; // Calcul du projeté de la matrice sur le masque
     }
   }
+  //  printf("%f\n", proj);
 
   q=pas*floor((proj - pas*((float)mes/deux + key))/pas) - (proj - (pas*((float)mes/deux + key)));
+  //  printf("%f\n\n",q);
   w=proj + a*q;
+  //  printf("%f\n\n",w);
  
   for (i=0;i<N;i++){
     for (j=0;j<N;j++){
-      blocT[i][j]+=(w*masque_t[i][j]/Norme_masque); // Remplacement de la matrice B par la matrice marquée
+      blocT[i][j]= blocT2[i][j]+(w*masque_t[i][j]/Norme_masque); // Remplacement de la matrice B par la matrice marquée
+      //   printf("%f ",blocT[i][j]);
     }
+    //    printf("\n");
   }
+  dalocd(blocT2,N);
 
   /** Test sur la réussite de l'insertion **/
 
@@ -91,13 +122,17 @@ void insertion ( double **blocT, int N, int pas, float a,double key,int mes){
       proj2+=blocT[i][j]*masque_t[i][j]/Norme_masque; 
     }
   }
+  //  printf("%f\n",proj2);
 
-  Q=fabs((pas*floor((proj2-key*pas)/pas))-proj2+(key*pas)); // Variable de détection
-  
+  Q=pas*(floor((proj2-key*pas)/pas))-proj2+(key*pas); // Variable de détection
+  if (Q<0)
+    Q= (-Q);
+  printf("%f\n",Q);
+
   if (Q < ((1-a)*(pas/deux))){  // Critère de détection
     mes2=0;
   }
-  else {
+  else{
     mes2=1;
   }
   printf("Message test : %d\n",mes2);
