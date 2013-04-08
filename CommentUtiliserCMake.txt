@@ -1,4 +1,17 @@
-Il suffit de se placer dans le dossier tatouage/build/
+Pour Créer un nouvel executable, il faut créer un dossier dans tatouage/src, mettre le fichier comportant le main() dedans, les autres fichier .c dans un dossier src qui est lui même dans le dossier du fichier précédent, et les .h dans un dossier include.
+
+En gros ça donne:
+
+tatouage/src/nomDuProjet/:
+
+fichierAvecLeMain.c
+src/*.c
+include/*.h
+
+Il faut ensuite ajouter au CMakeLists.txt le nom de l'executable (c'est le nom du dossier où est votre code) après les autres:
+set(EXECUTABLES tousLesExecutablesSéparésParDesEspaces)
+
+Ensuite,se placer dans le dossier tatouage/build/
 
 faire un:
 cmake ..
@@ -7,4 +20,9 @@ dans ce même dossier, faire un:
 
 make
 
-Les exécutables sont dans tatouage/bin/
+le programme compile, et l'executable est dans tatouage/bin/
+
+
+Pour toutes questions, me contacter:
+
+pierre.bourre@telecom-sudparis.eu

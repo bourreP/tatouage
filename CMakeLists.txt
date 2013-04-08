@@ -1,16 +1,4 @@
-#EXECUTABLES A CREER
-
-set (
-
-	executables 
-	
-	testDCTSurCanalV
-	
-	
-
-)
 cmake_minimum_required (VERSION 2.8)
-
 #Nom du projet
 
 Project (Tatouage)
@@ -19,38 +7,31 @@ Project (Tatouage)
 
 find_package (OpenCV REQUIRED)
 
-
 set (
     
 	EXECUTABLE_OUTPUT_PATH
 
     ${CMAKE_CURRENT_LIST_DIR}/bin/
-)
+	)
 
-#Configuration de l'exécutable
+macro (creation EXECUTABLES)
+	foreach (EXECUTABLE ${EXECUTABLES})
+		include_directories(${CMAKE_CURRENT_SOURCE_DIR}/${EXECUTABLE}/include)
+		set(${EXECUTABLE}_SRC)
+		AUX_SOURCE_DIRECTORY(${CMAKE_CURRENT_SOURCE_DIR}/${EXECUTABLE}/src ${EXECUTABLE}_SRC)
+		AUX_SOURCE_DIRECTORY(${CMAKE_CURRENT_SOURCE_DIR}/${EXECUTABLE}/ ${EXECUTABLE}_SRC)
 
-file (
-	
-	GLOB_RECURSE
-	
-	fichiers_sources
-	
-	src/*
+		add_executable(${EXECUTABLE} ${${EXECUTABLE}_SRC})
 
-)
+		target_link_libraries (
 
-add_executable (
-	
-	${executables}
+			${EXECUTABLE}
 
-	${fichiers_sources}
-)	
+			${OpenCV_LIBS}
 
-#Configuration de l'édition de liens
+		)
 
-target_link_libraries (
-        
-		${executables}
+	endforeach()
+endmacro()
 
-        ${OpenCV_LIBS}
-)
+add_subdirectory(${CMAKE_SOURCE_DIR}/src/)
