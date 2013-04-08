@@ -23,6 +23,11 @@ make
 le programme compile, et l'executable est dans tatouage/bin/
 
 
+Si vous voulez utiliser un dégueur (comme ddd) il faut se placer dans build et faire:
+
+cmake -DCMAKE_BUILD_TYPE=Debug ..
+
+Vous pouvez ensuite faire un make et l'executable sera munit de l'option "-g" de gcc qui permet cela.
 Pour toutes questions, me contacter:
 
 pierre.bourre@telecom-sudparis.eu
