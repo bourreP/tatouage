@@ -3,6 +3,8 @@ cmake_minimum_required (VERSION 2.8)
 
 Project (Tatouage)
 
+ADD_DEFINITIONS(-g -O2 -fsigned-char -freg-struct-return -Wall -W -Wshadow -Wstrict-prototypes -Wpointer-arith -Wcast-qual -Winline) #Options de compilations avec gcc
+
 #Inclusion d'OpenCV
 
 find_package (OpenCV REQUIRED)
