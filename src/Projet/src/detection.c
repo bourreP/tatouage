@@ -29,7 +29,7 @@ void detectionMarque(int N){
   blc=alocamd(N,N);
   blcT=alocamd(N,N);
 
-  imgTat=cvLoadImage("imageTatouee.jpg",1);
+  imgTat=cvLoadImage("Resultat/imageTatouee.jpg",1);
   Mtest=alocamd(imgTat->width,imgTat->height);
   imgDet=cvCreateImage(cvGetSize(imgTat),imgTat->depth,imgTat->nChannels);
 
@@ -37,22 +37,22 @@ void detectionMarque(int N){
   extractionCanalV(Mtest,imgDet);
 
 
-  if ((POS=fopen("position_bloc.txt","r"))==NULL){
+  if ((POS=fopen("Resultat/position_bloc.txt","r"))==NULL){
     printf("Erreur ouverture fichier.\n");
     exit (EXIT_FAILURE);
   }
 
-  if ((KEY=fopen("key.txt","r"))==NULL){
+  if ((KEY=fopen("Resultat/key.txt","r"))==NULL){
     printf("Erreur ouverture fichier.\n");
     exit (EXIT_FAILURE);
   }
 
-  if ((Mark=fopen("Marque.txt","r"))==NULL){
+  if ((Mark=fopen("Resultat/Marque.txt","r"))==NULL){
     printf("Erreur ouverture fichier.\n");
     exit (EXIT_FAILURE);
   }
 
-  if ((MarkDet=fopen("MarqueDetectee.txt","w"))==NULL){
+  if ((MarkDet=fopen("Resultat/MarqueDetectee.txt","w"))==NULL){
     printf("Erreur ouverture fichier.\n");
     exit (EXIT_FAILURE);
   }

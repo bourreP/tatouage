@@ -12,7 +12,7 @@ void logoToBin (IplImage *Logo){
   double **mat;
   mat=alocamd(Logo->width,Logo->height);
   
-  if ((Mark=fopen("Marque.txt","w"))==NULL){
+  if ((Mark=fopen("Resultat/Marque.txt","w"))==NULL){
     printf("Erreur ouverture fichier.\n");
     exit (EXIT_FAILURE);
   }
@@ -46,7 +46,7 @@ void markToLogo (IplImage *Logo){
   mat=alocamd(Logo->width,Logo->height);
   LogRec=cvCreateImage(cvGetSize(Logo),Logo->depth,Logo->nChannels) ; 
 
-  if ((MarkDet=fopen("MarqueDetectee.txt","r"))==NULL){
+  if ((MarkDet=fopen("Resultat/MarqueDetectee.txt","r"))==NULL){
     printf("Erreur ouverture fichier 1.\n");
     exit (EXIT_FAILURE);
   }

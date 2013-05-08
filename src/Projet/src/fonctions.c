@@ -28,6 +28,9 @@ void echangerDouble ( double *x, double *y ) {
 void calculPSNR (IplImage *img){
 
   int i,j;
+  double EQMb=0;
+  double EQMg=0;
+  double EQMr=0;
   double EQM=0;
   double PSNR;
   CvScalar v;
@@ -39,10 +42,12 @@ void calculPSNR (IplImage *img){
     for (j=0;j<img->height;j++){
       v=cvGet2D(img,j,i); 
       s=cvGet2D(imgTat,j,i);
-      EQM+=(v.val[0]+v.val[1]+v.val[2]-s.val[0]-s.val[1]-s.val[2])*(v.val[0]+v.val[1]+v.val[2]-s.val[0]-s.val[1]-s.val[2]);
+      EQMb+=(v.val[0]-s.val[0])*(v.val[0]-s.val[0]);
+      EQMg+=(v.val[1]-s.val[1])*(v.val[1]-s.val[1]);
+      EQMb+=(v.val[2]-s.val[2])*(v.val[2]-s.val[2]);
     }
 
-  EQM=EQM/(img->height*img->width*3);
+  EQM=(EQMb+EQMg+EQMr)/(img->height*img->width*3);
   PSNR=10*log10((255*255)/EQM);
 
   printf("On a un PSNR de %lfdB.\n",PSNR);

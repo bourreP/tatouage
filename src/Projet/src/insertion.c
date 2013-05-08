@@ -21,7 +21,7 @@ void selection(double **Mv,int N,IplImage *img){
   posy=alocavi(((img->height*img->width)/(N*N*5)));
   ener=malloc(((img->height*img->width)/(N*N*5))*sizeof(double));
 
-  if ((POS=fopen("position_bloc.txt","w"))==NULL){
+  if ((POS=fopen("Resultat/position_bloc.txt","w"))==NULL){
     printf("Erreur ouverture fichier.\n");
     exit (EXIT_FAILURE);
   }
@@ -58,7 +58,7 @@ void generationPar(int N,IplImage *img,IplImage *Logo){
   
   logoToBin (Logo); // On convertie le logo en binaires, ce sera le message à tatouer
 
-  if ((KEY=fopen("key.txt","w"))==NULL){
+  if ((KEY=fopen("Resultat/key.txt","w"))==NULL){
     printf("Erreur ouverture fichier.\n");
     exit (EXIT_FAILURE);
   }
@@ -159,12 +159,12 @@ void Insertion (IplImage *img,int N,int *p){
   generationPar(N,img,Logo);
   selection(Mv,N,img);
 
-  if ((Mark=fopen("Marque.txt","r"))==NULL){
+  if ((Mark=fopen("Resultat/Marque.txt","r"))==NULL){
     printf("Erreur ouverture fichier.\n");
     exit (EXIT_FAILURE);
   }
    
-  if ((POS=fopen("position_bloc.txt","r"))==NULL){
+  if ((POS=fopen("Resultat/position_bloc.txt","r"))==NULL){
     printf("Erreur ouverture fichier.\n");
     exit (EXIT_FAILURE);
   }
@@ -185,7 +185,7 @@ void Insertion (IplImage *img,int N,int *p){
   cvCvtColor(imgHSVTat,imgTat,CV_HSV2BGR); // On convertit l'image HSV tatouée en image RGB
   cvNamedWindow("Image tatouée",CV_WINDOW_AUTOSIZE);
   cvShowImage ("Image tatouée",imgTat);
-  cvSaveImage ("imageTatouee.jpg", imgTat, p);
+  cvSaveImage ("Resultat/imageTatouee.jpg", imgTat, p);
 
   calculPSNR(img);
 
