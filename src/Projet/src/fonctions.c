@@ -36,7 +36,7 @@ void calculPSNR (IplImage *img){
   CvScalar v;
   CvScalar s;
   IplImage *imgTat;
-  imgTat=cvLoadImage("imageTatouee.jpg",1);
+  imgTat=cvLoadImage("Resultat/imageTatouee.jpg",1);
 
   for (i=0;i<img->width;i++)
     for (j=0;j<img->height;j++){
