@@ -64,7 +64,7 @@ void generationPar(int N,IplImage *img,IplImage *Logo){
   }
 
   for (i=0;i<NWB;i++)
-  fprintf(KEY,"%f\n",key[i]);
+    fprintf(KEY,"%f\n",key[i]);
   fclose (KEY);
 
 }
@@ -158,7 +158,7 @@ void Insertion (IplImage *img,int N,int *p){
   extractionCanalV(Mv,imgHSV);
   generationPar(N,img,Logo);
   selection(Mv,N,img);
-
+  
   if ((Mark=fopen("Resultat/Marque.txt","r"))==NULL){
     printf("Erreur ouverture fichier.\n");
     exit (EXIT_FAILURE);
