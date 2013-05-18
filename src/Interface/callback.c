@@ -41,10 +41,7 @@ void search_logo_file_set_cb(GtkWidget *buttonImage, GtkImage *afficherLogo)
 
 void tatouer_clicked_cb ()
 {
-	char* const argv[]= {"./Tatouage", positionImage, positionLogo};
-
-	g_message("%s %s",argv[1], argv[2]);
-
+	char* const argv[]= {"./Tatouage", positionImage, positionLogo, alpha, delta, "tatouer"};
 
 	if (positionImage == NULL)
 	{
