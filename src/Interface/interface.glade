@@ -372,22 +372,22 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkComboBox" id="combobox1">
-                    <property name="width_request">350</property>
-                    <property name="height_request">0</property>
+                  <object class="GtkBox" id="box1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="halign">center</property>
-                    <property name="valign">start</property>
+                    <property name="homogeneous">True</property>
+                    <child>
+                      <placeholder/>
+                    </child>
                   </object>
                   <packing>
-                    <property name="expand">False</property>
+                    <property name="expand">True</property>
                     <property name="fill">True</property>
                     <property name="position">1</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="attack_button">
+                  <object class="GtkButton" id="attaquer">
                     <property name="label" translatable="yes">Attaquer</property>
                     <property name="use_action_appearance">False</property>
                     <property name="width_request">110</property>
@@ -398,7 +398,7 @@
                     <property name="valign">center</property>
                     <property name="margin_bottom">50</property>
                     <property name="use_action_appearance">False</property>
-                    <signal name="clicked" handler="on_attack_button_clicked" swapped="no"/>
+                    <signal name="clicked" handler="on" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -454,7 +454,7 @@
                     <property name="halign">center</property>
                     <property name="valign">center</property>
                     <property name="orientation">vertical</property>
-                    <signal name="file-set" handler="on_filechooserbutton1_file_set" swapped="no"/>
+                    <signal name="file-set" handler="on_search_image_detect_file_set" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">True</property>
@@ -518,12 +518,14 @@
     <property name="opacity">0.99999999977648257</property>
     <property name="message_type">warning</property>
     <property name="text" translatable="yes">Veuillez sélectionner une image</property>
-    <signal name="close" handler="gtk_main_quit" swapped="no"/>
+    <signal name="close" handler="gtk_widget_hide" swapped="no"/>
+    <signal name="destroy" handler="on_buttonDialog1_clicked" swapped="no"/>
     <child internal-child="vbox">
       <object class="GtkBox" id="messagedialog-vbox">
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <property name="spacing">2</property>
+        <signal name="destroy" handler="on_buttonDialog1_clicked" swapped="no"/>
         <child internal-child="action_area">
           <object class="GtkButtonBox" id="messagedialog-action_area">
             <property name="can_focus">False</property>
@@ -567,6 +569,7 @@
     <property name="opacity">0.99999999977648257</property>
     <property name="message_type">warning</property>
     <property name="text" translatable="yes">Veuillez sélectionner un logo</property>
+    <signal name="close" handler="gtk_widget_hide" swapped="no"/>
     <child internal-child="vbox">
       <object class="GtkBox" id="messagedialog-vbox4">
         <property name="can_focus">False</property>

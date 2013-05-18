@@ -50,10 +50,14 @@ int lancementFenetrePrincipale(int argc, char *argv[])
 	g_signal_connect (logoSearch, "file-set", G_CALLBACK(search_logo_file_set_cb), afficherLogo);
 	g_signal_connect (erreurImageOK, "clicked", G_CALLBACK(on_buttonDialog1_clicked), NULL);
 	g_signal_connect (erreurLogoOK, "clicked", G_CALLBACK(on_buttonDialog2_clicked), NULL);
+	g_signal_connect (erreurImage, "close", G_CALLBACK(on_buttonDialog1_clicked), NULL);
+	
+	
 
 
 	//Redimention == FALSE
 	gtk_window_set_resizable(GTK_WINDOW(mainWindow), FALSE);
+	gtk_window_set_position(GTK_WINDOW(mainWindow),GTK_WIN_POS_CENTER);
 
 	changeFilterAndDirectory(filtre, directory, imageSearch, logoSearch);
 
