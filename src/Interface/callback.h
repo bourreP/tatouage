@@ -2,6 +2,7 @@
 #define CALLBACK_H
 
 #include <gtk/gtk.h>
+#include <string.h>
 
 #include "configuration.h"
 

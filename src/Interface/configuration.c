@@ -7,7 +7,8 @@ gdouble delta = 115;
 
 void changeFilterAndDirectory (GtkFileFilter *filtre, gchar *directory, GtkWidget* imageSearch, GtkWidget* logoSearch)
 {
-	getcwd ( directory, sizeof(directory) );
+	//getcwd ( directory, sizeof(directory) );
+	directory = (gchar*) get_current_dir_name();
 
 	gtk_file_filter_add_pattern (filtre,"*.bmp");
 	gtk_file_filter_add_pattern (filtre,"*.jpg"); // on peut charger des images jpg  
