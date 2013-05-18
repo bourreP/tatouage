@@ -47,7 +47,7 @@ void tatouer_clicked_cb ()
 	alphaValue = g_strdup_printf("%lf",alpha);
 	deltaValue = g_strdup_printf("%lf",delta);
 
-	char* const argv[]= {"./Tatouage", positionImage, positionLogo, "insertion", alphaValue/*, deltaValue*/};
+	char* const argv[]= {"./Tatouage", positionImage, positionLogo, "insertion", alphaValue, deltaValue};
 
 	if (positionImage == NULL)
 	{
