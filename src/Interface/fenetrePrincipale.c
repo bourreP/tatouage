@@ -11,6 +11,7 @@ int lancementFenetrePrincipale(int argc, char *argv[])
 	GtkWidget *mainWindow = NULL;
 	GtkWidget *imageSearch = NULL;
 	GtkWidget *logoSearch = NULL;
+	GtkWidget *imageDetectSearch = NULL;
 	GtkWidget *valeurAlpha = NULL;
 	GtkWidget *valeurDelta = NULL;
 	GtkWidget *tatouer = NULL;
@@ -35,6 +36,7 @@ int lancementFenetrePrincipale(int argc, char *argv[])
 	valeurDelta = GTK_WIDGET(gtk_builder_get_object(builder,"valeur_delta"));
 	imageSearch = GTK_WIDGET(gtk_builder_get_object(builder,"search_image"));
 	logoSearch = GTK_WIDGET(gtk_builder_get_object(builder,"search_logo"));
+	imageDetectSearch = GTK_WIDGET(gtk_builder_get_object(builder,"search_image_detect"));
 	afficherImage = GTK_WIDGET(gtk_builder_get_object(builder,"image"));
 	afficherLogo = GTK_WIDGET(gtk_builder_get_object(builder,"logo"));
 	erreurImage = GTK_WIDGET(gtk_builder_get_object(builder,"messagedialog1"));

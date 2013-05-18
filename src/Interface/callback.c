@@ -11,6 +11,11 @@ void on_search_logo_file_set(GtkWidget *logoSearch, gchar** positionLogo)
 	*positionLogo = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (logoSearch));
 }
 
+void on_search_image_detect_file_set(GtkWidget *imageDetectSearch, gchar** positionImageDetect)
+{
+	*positionImageDetect = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (imageDetectSearch));
+}
+
 void on_valeur_delta_change_value(GtkSpinButton *valeurDelta, gdouble* delta)
 {
 	*delta = gtk_spin_button_get_value(valeurDelta);
@@ -72,7 +77,12 @@ void on_detecter_clicked()
 {
 
 	//char* const argv[]= {"./Tatouage", positionImage, positionLogo, "detection"};
-	gtk_widget_show_all(GTK_WIDGET(sauvegardeImage));	
+	/*if(!gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (imageDetectSearch)))
+	{
+		gtk_widget_show(erreurImage);
+	}
+	else*/ gtk_widget_show(GTK_WIDGET(sauvegardeImage));	
+	
 
 	//execvp("./Tatouage",argv);
 }

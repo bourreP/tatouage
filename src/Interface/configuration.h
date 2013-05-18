@@ -8,6 +8,8 @@ GtkWidget* erreurLogo;
 GtkMessageDialog* sauvegardeImage;
 gchar* positionImage;
 gchar* positionLogo;
+gchar* positionImageDetect;
+
 gdouble alpha;
 gdouble delta;
 
