@@ -17,6 +17,7 @@ int lancementFenetrePrincipale(int argc, char *argv[])
 	GtkWidget *afficherImage = NULL;
 	GtkWidget *afficherLogo = NULL;
 	GtkWidget *erreurImageOK = NULL;
+	GtkWidget *erreurLogoOK=NULL;
 	GtkFileFilter *filtre = gtk_file_filter_new ();
 	gchar directory[1024];
 
@@ -34,6 +35,8 @@ int lancementFenetrePrincipale(int argc, char *argv[])
 	afficherLogo = GTK_WIDGET(gtk_builder_get_object(builder,"logo"));
 	erreurImage = GTK_WIDGET(gtk_builder_get_object(builder,"messagedialog1"));
 	erreurImageOK = GTK_WIDGET(gtk_builder_get_object(builder,"buttonDialog1"));
+	erreurLogo = GTK_WIDGET(gtk_builder_get_object(builder,"messagedialog2"));
+	erreurLogoOK = GTK_WIDGET(gtk_builder_get_object(builder,"buttonDialog2"));
 
 	//On active les signaux nécessaires au déroulement de l'appli
 
@@ -46,6 +49,7 @@ int lancementFenetrePrincipale(int argc, char *argv[])
 	g_signal_connect (imageSearch, "file-set", G_CALLBACK(search_image_file_set_cb), afficherImage);
 	g_signal_connect (logoSearch, "file-set", G_CALLBACK(search_logo_file_set_cb), afficherLogo);
 	g_signal_connect (erreurImageOK, "clicked", G_CALLBACK(on_buttonDialog1_clicked), NULL);
+	g_signal_connect (erreurLogoOK, "clicked", G_CALLBACK(on_buttonDialog2_clicked), NULL);
 
 
 	//Redimention == FALSE

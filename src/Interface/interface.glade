@@ -303,6 +303,7 @@
                         <property name="halign">center</property>
                         <property name="valign">start</property>
                         <property name="stock">gtk-missing-image</property>
+                        <property name="icon-size">6</property>
                       </object>
                       <packing>
                         <property name="expand">True</property>
@@ -319,6 +320,7 @@
                         <property name="halign">center</property>
                         <property name="valign">start</property>
                         <property name="stock">gtk-missing-image</property>
+                        <property name="icon-size">6</property>
                       </object>
                       <packing>
                         <property name="expand">True</property>
@@ -385,8 +387,8 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="button2">
-                    <property name="label" translatable="yes">button</property>
+                  <object class="GtkButton" id="attack_button">
+                    <property name="label" translatable="yes">Attaquer</property>
                     <property name="use_action_appearance">False</property>
                     <property name="width_request">110</property>
                     <property name="visible">True</property>
@@ -396,6 +398,7 @@
                     <property name="valign">center</property>
                     <property name="margin_bottom">50</property>
                     <property name="use_action_appearance">False</property>
+                    <signal name="clicked" handler="on_attack_button_clicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -426,8 +429,7 @@
               <object class="GtkVBox" id="vbox9">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="spacing">5</property>
-                <property name="homogeneous">True</property>
+                <property name="spacing">2</property>
                 <child>
                   <object class="GtkLabel" id="label9">
                     <property name="width_request">50</property>
@@ -435,8 +437,8 @@
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
                     <property name="valign">end</property>
-                    <property name="margin_top">50</property>
-                    <property name="label" translatable="yes">Choix type d'image</property>
+                    <property name="margin_top">30</property>
+                    <property name="label" translatable="yes">Sélection de la clé de l'image </property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -445,12 +447,14 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkComboBox" id="combobox2">
-                    <property name="width_request">350</property>
+                  <object class="GtkFileChooserButton" id="search_image_detect">
+                    <property name="width_request">300</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
-                    <property name="valign">start</property>
+                    <property name="valign">center</property>
+                    <property name="orientation">vertical</property>
+                    <signal name="file-set" handler="on_filechooserbutton1_file_set" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">True</property>
@@ -469,6 +473,7 @@
                     <property name="halign">center</property>
                     <property name="margin_bottom">50</property>
                     <property name="use_action_appearance">False</property>
+                    <signal name="clicked" handler="on_detect_button_clicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -551,6 +556,54 @@
     </child>
     <action-widgets>
       <action-widget response="0">buttonDialog1</action-widget>
+    </action-widgets>
+  </object>
+  <object class="GtkMessageDialog" id="messagedialog2">
+    <property name="can_focus">False</property>
+    <property name="border_width">5</property>
+    <property name="resizable">False</property>
+    <property name="type_hint">dialog</property>
+    <property name="skip_taskbar_hint">True</property>
+    <property name="opacity">0.99999999977648257</property>
+    <property name="message_type">warning</property>
+    <property name="text" translatable="yes">Veuillez sélectionner un logo</property>
+    <child internal-child="vbox">
+      <object class="GtkBox" id="messagedialog-vbox4">
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox" id="messagedialog-action_area4">
+            <property name="can_focus">False</property>
+            <property name="layout_style">center</property>
+            <child>
+              <object class="GtkButton" id="buttonDialog2">
+                <property name="label" translatable="yes">OK</property>
+                <property name="use_action_appearance">False</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_action_appearance">False</property>
+                <signal name="clicked" handler="on_buttonDialog2_clicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="0">buttonDialog2</action-widget>
     </action-widgets>
   </object>
 </interface>

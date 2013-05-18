@@ -4,6 +4,7 @@
 #include <gtk/gtk.h>
 
 GtkWidget* erreurImage;
+GtkWidget* erreurLogo;
 gchar* positionImage;
 gchar* positionLogo;
 gdouble alpha;

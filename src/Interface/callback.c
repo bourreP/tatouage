@@ -46,10 +46,12 @@ void tatouer_clicked_cb ()
 	if (positionImage == NULL)
 	{
 		gtk_widget_show(erreurImage);
+		g_print("image non séléctionnée\n");
 	}
 	else if (positionLogo == NULL)
 	{
 		gtk_widget_show(erreurLogo);
+		g_print("logo non choisi\n");
 	}
 	else
 	{
@@ -58,7 +60,23 @@ void tatouer_clicked_cb ()
 	}
 }
 
+void on_detecter_clicked
+{
+	char* const argv[]= {"./Tatouage", positionImage, positionLogo, alpha, delta, "detecter"};
+
+	
+	else
+	{
+		system("mkdir Resultat 2> /dev/null");
+		execvp("./Tatouage",argv);
+	}
+}
 void on_buttonDialog1_clicked()
 {
 	gtk_widget_hide(erreurImage);
+}
+
+void on_buttonDialog2_clicke_clicked()
+{
+	gtk_widget_hide(erreurLogo);
 }
