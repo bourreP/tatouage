@@ -9,9 +9,6 @@ ADD_DEFINITIONS(-g -O2 -fsigned-char -freg-struct-return -Wall -W -Wshadow -Wstr
 
 find_package (OpenCV REQUIRED)
 
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(GTK3 REQUIRED gtk+-3.0)
-
 set (
     
 	EXECUTABLE_OUTPUT_PATH
@@ -22,8 +19,6 @@ set (
 macro (creation EXECUTABLES)
 	foreach (EXECUTABLE ${EXECUTABLES})
 		include_directories(${CMAKE_CURRENT_SOURCE_DIR}/${EXECUTABLE}/include)
-		include_directories(${GTK3_INCLUDE_DIRS})
-		link_directories(${GTK3_LIBRARY_DIRS})
 		set(${EXECUTABLE}_SRC)
 		AUX_SOURCE_DIRECTORY(${CMAKE_CURRENT_SOURCE_DIR}/${EXECUTABLE}/src ${EXECUTABLE}_SRC)
 		AUX_SOURCE_DIRECTORY(${CMAKE_CURRENT_SOURCE_DIR}/${EXECUTABLE}/ ${EXECUTABLE}_SRC)
@@ -35,7 +30,6 @@ macro (creation EXECUTABLES)
 			${EXECUTABLE}
 
 			${OpenCV_LIBS}
-			${GTK3_LIBRARIES}
 
 		)
 

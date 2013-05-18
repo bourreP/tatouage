@@ -1,3 +1,3 @@
-set(EXECUTABLES Projet passebas passehaut testDCTSurCanalV Interface)
+set(EXECUTABLES Projet passebas passehaut testDCTSurCanalV)
 
 creation("${EXECUTABLES}")
