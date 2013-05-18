@@ -1,6 +1,8 @@
-#ifndef _GLOBAL_H
-#define _GLOBAL_H
-# define MAX_INT 32768//262144
+#ifndef GLOBAL_H
+#define GLOBAL_H
+
+#define MAX_INT 32768//262144
+
 double **bloc;
 double **blocT;
 int NWB;
@@ -13,4 +15,5 @@ float pas;
 FILE *KEY,*POS,*Mark,*MarkDet;
 IplImage *img;
 IplImage *Logo;
+
 #endif

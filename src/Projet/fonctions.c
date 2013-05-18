@@ -1,3 +1,5 @@
+#include "fonctions.h"
+/*
 #include <stdio.h> 
 #include "matrix.h"
 #include <math.h>
@@ -7,7 +9,7 @@
 #include "global.h"
 #include <time.h>
 #include "logoMark.h"
-
+*/
 
 void echanger ( int *px, int *py ) {
 

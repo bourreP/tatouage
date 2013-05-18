@@ -1,7 +1,3 @@
-#include <stdio.h> 
-#include <math.h> 
-#include "matrix.h" 
-// #include "matrix_vit.h"
 #include "dct.h"
  
 /*

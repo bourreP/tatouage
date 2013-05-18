@@ -1,11 +1,13 @@
 #include <stdio.h> 
-#include "matrix.h"
-#include <highgui.h>//<opencv/highgui.h>
-#include <cv.h>//<opencv/cv.h>
+#include <highgui.h>
+#include <cv.h>
+
+
 #include "global.h"
 #include "fonctions.h"
 #include "insertion.h"
 #include "detection.h"
+#include "matrix.h"
 
 int main (int argc, char **argv){
 
