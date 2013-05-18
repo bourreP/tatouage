@@ -2,6 +2,7 @@
 
 GtkWidget *erreurImage = NULL;
 GtkWidget *erreurLogo = NULL;
+GtkMessageDialog *sauvegardeImage=NULL;
 gchar* positionImage = NULL;
 gchar* positionLogo = NULL;
 gdouble alpha = 0.72;

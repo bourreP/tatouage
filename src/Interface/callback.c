@@ -71,9 +71,10 @@ void tatouer_clicked_cb ()
 void on_detecter_clicked()
 {
 
-	char* const argv[]= {"./Tatouage", positionImage, positionLogo, "detection"};
+	//char* const argv[]= {"./Tatouage", positionImage, positionLogo, "detection"};
+	gtk_widget_show_all(GTK_WIDGET(sauvegardeImage));	
 
-	execvp("./Tatouage",argv);
+	//execvp("./Tatouage",argv);
 }
 void on_buttonDialog1_clicked()
 {

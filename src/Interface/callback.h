@@ -16,5 +16,7 @@ void tatouer_clicked_cb ();
 void on_buttonDialog1_clicked();
 void on_buttonDialog2_clicked();
 void on_detecter_clicked();
+void on_attaquer_clicked();
+
 
 #endif

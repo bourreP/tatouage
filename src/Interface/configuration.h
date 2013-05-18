@@ -5,6 +5,7 @@
 
 GtkWidget* erreurImage;
 GtkWidget* erreurLogo;
+GtkMessageDialog* sauvegardeImage;
 gchar* positionImage;
 gchar* positionLogo;
 gdouble alpha;
