@@ -41,12 +41,13 @@ void search_logo_file_set_cb(GtkWidget *buttonImage, GtkImage *afficherLogo)
 
 void tatouer_clicked_cb ()
 { 
-	char alphaValue[sizeof(alpha)];
-	char deltaValue[sizeof(delta)];
-	sprintf(alphaValue, "%g", alpha);
-	sprintf(deltaValue, "%g", delta);
+	gchar* alphaValue;
+	gchar* deltaValue;
 
-	char* const argv[]= {"./Tatouage", positionImage, positionLogo, "tatouer", alphaValue, deltaValue};
+	alphaValue = g_strdup_printf("%lf",alpha);
+	deltaValue = g_strdup_printf("%lf",delta);
+
+	char* const argv[]= {"./Tatouage", positionImage, positionLogo, "insertion", alphaValue/*, deltaValue*/};
 
 	if (positionImage == NULL)
 	{
@@ -63,12 +64,14 @@ void tatouer_clicked_cb ()
 		system("mkdir Resultat 2> /dev/null");
 		execvp("./Tatouage",argv);
 	}
+	g_free(alphaValue);
+	g_free(deltaValue);
 }
 
 void on_detecter_clicked()
 {
 
-	char* const argv[]= {"./Tatouage", positionImage, positionLogo, "detecter"};
+	char* const argv[]= {"./Tatouage", positionImage, positionLogo, "detection"};
 
 	execvp("./Tatouage",argv);
 }

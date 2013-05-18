@@ -1,8 +1,8 @@
-all: test clean
-CC = gcc -O2
+all: lancement clean
+CC = gcc -O2 -g
 
-test: main.o callback.o configuration.o fenetrePrincipale.o
-	$(CC) -o test callback.o configuration.o fenetrePrincipale.o main.o  $$(pkg-config --libs gmodule-2.0) $$(pkg-config --libs gtk+-3.0)
+lancement: main.o callback.o configuration.o fenetrePrincipale.o
+	$(CC) -o lancement callback.o configuration.o fenetrePrincipale.o main.o  $$(pkg-config --libs gmodule-2.0) $$(pkg-config --libs gtk+-3.0)
 
 main.o: main.c
 	$(CC) -c main.c  $$(pkg-config --cflags gmodule-2.0) $$(pkg-config --cflags gtk+-3.0) 

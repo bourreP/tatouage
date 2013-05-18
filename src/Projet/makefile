@@ -1,6 +1,6 @@
 all: Tatouage clean
 
-CC = gcc
+CC = gcc -O2 -g
 CFLAGS = $$(pkg-config --cflags opencv) 
 LFLAGS = $$(pkg-config --libs opencv)
 
