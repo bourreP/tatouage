@@ -14,7 +14,7 @@ void search_image_file_set_cb(GtkWidget *buttonImage, GtkImage *afficherImage);
 void search_logo_file_set_cb(GtkWidget *buttonImage, GtkImage *afficherLogo);
 void tatouer_clicked_cb ();
 void on_buttonDialog1_clicked();
-void on_buttonDialog2_clicke();
+void on_buttonDialog2_clicked();
 void on_detecter_clicked();
 
 #endif

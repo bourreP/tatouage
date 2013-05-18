@@ -40,8 +40,13 @@ void search_logo_file_set_cb(GtkWidget *buttonImage, GtkImage *afficherLogo)
 }
 
 void tatouer_clicked_cb ()
-{
-	char* const argv[]= {"./Tatouage", positionImage, positionLogo, alpha, delta, "tatouer"};
+{ 
+	char alphaValue[sizeof(alpha)];
+	char deltaValue[sizeof(delta)];
+	sprintf(alphaValue, "%g", alpha);
+	sprintf(deltaValue, "%g", delta);
+
+	char* const argv[]= {"./Tatouage", positionImage, positionLogo, "tatouer", alphaValue, deltaValue};
 
 	if (positionImage == NULL)
 	{
@@ -60,23 +65,19 @@ void tatouer_clicked_cb ()
 	}
 }
 
-void on_detecter_clicked
+void on_detecter_clicked()
 {
-	char* const argv[]= {"./Tatouage", positionImage, positionLogo, alpha, delta, "detecter"};
 
-	
-	else
-	{
-		system("mkdir Resultat 2> /dev/null");
-		execvp("./Tatouage",argv);
-	}
+	char* const argv[]= {"./Tatouage", positionImage, positionLogo, "detecter"};
+
+	execvp("./Tatouage",argv);
 }
 void on_buttonDialog1_clicked()
 {
 	gtk_widget_hide(erreurImage);
 }
 
-void on_buttonDialog2_clicke_clicked()
+void on_buttonDialog2_clicked()
 {
 	gtk_widget_hide(erreurLogo);
 }
