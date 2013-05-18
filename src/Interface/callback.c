@@ -45,7 +45,23 @@ void tatouer_clicked_cb ()
 
 	g_message("%s %s",argv[1], argv[2]);
 
-	system("mkdir Resultat 2> /dev/null");
 
-	execvp("./Tatouage",argv);
+	if (positionImage == NULL)
+	{
+		gtk_widget_show(erreurImage);
+	}
+	else if (positionLogo == NULL)
+	{
+		gtk_widget_show(erreurLogo);
+	}
+	else
+	{
+		system("mkdir Resultat 2> /dev/null");
+		execvp("./Tatouage",argv);
+	}
+}
+
+void on_buttonDialog1_clicked()
+{
+	gtk_widget_hide(erreurImage);
 }

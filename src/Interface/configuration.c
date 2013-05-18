@@ -1,5 +1,7 @@
 #include "configuration.h"
 
+GtkWidget *erreurImage = NULL;
+GtkWidget *erreurLogo = NULL;
 gchar* positionImage = NULL;
 gchar* positionLogo = NULL;
 gdouble alpha = 0.72;
@@ -7,7 +9,6 @@ gdouble delta = 115;
 
 void changeFilterAndDirectory (GtkFileFilter *filtre, gchar *directory, GtkWidget* imageSearch, GtkWidget* logoSearch)
 {
-	//getcwd ( directory, sizeof(directory) );
 	directory = (gchar*) get_current_dir_name();
 
 	gtk_file_filter_add_pattern (filtre,"*.bmp");

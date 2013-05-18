@@ -13,5 +13,6 @@ void on_valeur_alpha_change_value(GtkSpinButton *valeurAlpha, gdouble* alpha);
 void search_image_file_set_cb(GtkWidget *buttonImage, GtkImage *afficherImage);
 void search_logo_file_set_cb(GtkWidget *buttonImage, GtkImage *afficherLogo);
 void tatouer_clicked_cb ();
+void on_buttonDialog1_clicked();
 
 #endif

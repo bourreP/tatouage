@@ -16,6 +16,7 @@ int lancementFenetrePrincipale(int argc, char *argv[])
 	GtkWidget *tatouer = NULL;
 	GtkWidget *afficherImage = NULL;
 	GtkWidget *afficherLogo = NULL;
+	GtkWidget *erreurImageOK = NULL;
 	GtkFileFilter *filtre = gtk_file_filter_new ();
 	gchar directory[1024];
 
@@ -31,6 +32,8 @@ int lancementFenetrePrincipale(int argc, char *argv[])
 	logoSearch = GTK_WIDGET(gtk_builder_get_object(builder,"search_logo"));
 	afficherImage = GTK_WIDGET(gtk_builder_get_object(builder,"image"));
 	afficherLogo = GTK_WIDGET(gtk_builder_get_object(builder,"logo"));
+	erreurImage = GTK_WIDGET(gtk_builder_get_object(builder,"messagedialog1"));
+	erreurImageOK = GTK_WIDGET(gtk_builder_get_object(builder,"buttonDialog1"));
 
 	//On active les signaux nécessaires au déroulement de l'appli
 
@@ -42,6 +45,8 @@ int lancementFenetrePrincipale(int argc, char *argv[])
 	g_signal_connect (valeurAlpha, "value-changed", G_CALLBACK(on_valeur_alpha_change_value), &alpha);
 	g_signal_connect (imageSearch, "file-set", G_CALLBACK(search_image_file_set_cb), afficherImage);
 	g_signal_connect (logoSearch, "file-set", G_CALLBACK(search_logo_file_set_cb), afficherLogo);
+	g_signal_connect (erreurImageOK, "clicked", G_CALLBACK(on_buttonDialog1_clicked), NULL);
+
 
 	//Redimention == FALSE
 	gtk_window_set_resizable(GTK_WINDOW(mainWindow), FALSE);
