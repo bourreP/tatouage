@@ -1,6 +1,10 @@
 #if !defined(DCT_H__408B48CA_1F71_4B7A_92A6_48E48ABC81FC__INCLUDED_)
 #define DCT_H__408B48CA_1F71_4B7A_92A6_48E48ABC81FC__INCLUDED_
 
+#include <stdio.h> 
+#include <math.h> 
+#include "matrix.h" 
+
 void gen_dct(double **c, int N) ;
 void dct1dim(double *v, double *y, int N);
 void dct1dim_inv(double *vt, double *vrec, int N);

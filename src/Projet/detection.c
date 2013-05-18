@@ -1,13 +1,4 @@
-#include <stdio.h> 
-#include "matrix.h"
-#include <math.h>
-#include <highgui.h>//<opencv/highgui.h>
-#include <cv.h>//<opencv/cv.h>
-#include "dct.h"
-#include "masque.h"
-#include "global.h"
-#include "fonctions.h"
-#include "logoMark.h"
+#include "detection.h"
 
 void detectionMarque(int N){
 

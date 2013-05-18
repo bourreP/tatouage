@@ -1,9 +1,4 @@
-#include <stdio.h> 
-#include "matrix.h"
-#include <highgui.h>//<opencv/highgui.h>
-#include <cv.h>//<opencv/cv.h>
-#include "global.h"
-
+#include "logoMark.h"
 
 void logoToBin (IplImage *Logo){
 

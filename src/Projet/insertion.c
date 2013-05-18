@@ -1,11 +1,4 @@
-#include <stdio.h> 
-#include "matrix.h"
-#include <math.h>
-#include <highgui.h>//<opencv/highgui.h>
-#include <cv.h>//<opencv/cv.h>
-#include "dct.h"
-#include "global.h"
-#include "fonctions.h"
+#include "insertion.h"
 
 /* On sélectionne au hasard 20% des blocs de NxN de l'image, on calcul leur énergie, on les tri par ordre décroissant d'énergie, on sélectionne les 1024 de plus haute énergie et on enregistre leur position dans position_bloc.txt */
 
