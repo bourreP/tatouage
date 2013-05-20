@@ -60,6 +60,9 @@ int lancementFenetrePrincipale()
 	g_signal_connect (erreurLogoOK, "clicked", G_CALLBACK(on_buttonDialog2_clicked), NULL);
 	g_signal_connect (erreurDetectImageOK, "clicked", G_CALLBACK(on_buttonDialog3_clicked), NULL);
 	g_signal_connect (erreurImage, "close", G_CALLBACK(on_buttonDialog1_clicked), NULL);
+	g_signal_connect (erreurImage, "delete-event", G_CALLBACK(on_buttonDialog1_clicked), NULL);
+	g_signal_connect (erreurLogo, "delete-event", G_CALLBACK(on_buttonDialog2_clicked), NULL);
+	g_signal_connect (sauvegardeImage, "delete-event", G_CALLBACK(gtk_widget_hide), NULL);
 	
 
 

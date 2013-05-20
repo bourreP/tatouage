@@ -60,12 +60,12 @@ void tatouer_clicked_cb ()
 
 	if (positionImage == NULL)
 	{
-		gtk_widget_show(erreurImage);
+		gtk_window_reshow_with_initial_size(GTK_WINDOW(erreurImage));
 		g_print("image non séléctionnée\n");
 	}
 	else if (positionLogo == NULL)
 	{
-		gtk_widget_show(erreurLogo);
+		gtk_window_reshow_with_initial_size(GTK_WINDOW(erreurLogo));
 		g_print("logo non choisi\n");
 	}
 	else
@@ -94,15 +94,12 @@ void on_detecter_clicked()
 
 	g_strconcat(positionImage, (gchar*) "Resultat/imageTatouee.jpg", NULL);
 
-	g_message("%s", g_file_test(positionImage, G_FILE_TEST_EXISTS));
-
 	if(!g_file_test(positionImage, G_FILE_TEST_EXISTS))
 	{
 		gtk_widget_show(erreurDetectImage);
 	}
 	else
 	{
-		gtk_widget_show(GTK_WIDGET(sauvegardeImage));	
 		char* argv[]= {"./Tatouage", positionImage, positionLogo, "detection"};
 		g_spawn_sync(NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, &my_stdout, &my_stderr, &my_return_value, &my_error);
 
