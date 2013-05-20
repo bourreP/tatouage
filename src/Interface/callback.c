@@ -1,4 +1,4 @@
-#include "callback.h"
+	#include "callback.h"
 
 
 void on_search_image_file_set(GtkWidget *imageSearch, gchar** positionImage)
@@ -56,12 +56,12 @@ void tatouer_clicked_cb ()
 
 	if (positionImage == NULL)
 	{
-		gtk_widget_show(erreurImage);
+		gtk_window_reshow_with_initial_size(GTK_WINDOW(erreurImage));
 		g_print("image non séléctionnée\n");
 	}
 	else if (positionLogo == NULL)
 	{
-		gtk_widget_show(erreurLogo);
+		gtk_window_reshow_with_initial_size(GTK_WINDOW(erreurLogo));
 		g_print("logo non choisi\n");
 	}
 	else
@@ -81,7 +81,7 @@ void on_detecter_clicked()
 	{
 		gtk_widget_show(erreurImage);
 	}
-	else*/ gtk_widget_show(GTK_WIDGET(sauvegardeImage));	
+	else*/ gtk_window_reshow_with_initial_size(GTK_WINDOW(sauvegardeImage));	
 	
 
 	//execvp("./Tatouage",argv);
