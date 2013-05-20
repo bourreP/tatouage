@@ -9,48 +9,53 @@
 #include "detection.h"
 #include "matrix.h"
 
-int main (int argc, char **argv){
+void main (int argc, char **argv){
 
-  chargerImage(argv[1]);
-  chargerLogo(argc,argv[2]);
+	a = strtof(argv[4], NULL)/100;
+	pas = strtof(argv[5], NULL)/100;
 
-  int N=4; //définition de la taille des blocs pour la DCT
-  a=0.68;
-  pas=110;
-  NWB=(Logo->width)*(Logo->height);
-  
-  int p[3];  
-  p[0]=CV_IMWRITE_JPEG_QUALITY;
-  p[1]=100;
-  p[2]=0;
- 
-  cvNamedWindow("Image source",CV_WINDOW_AUTOSIZE);
-  cvShowImage ("Image source",img); // affiche de imgHSV
-  
-  bloc=alocamd(N,N);                     // Allocation des blocs
-  blocT=alocamd(N,N);                    // Allocation des blocs transformés    
-  
-  /** Génération de la clef, de la marque, insertion du tatouage et enregistrement de l'image tatouée **/
+	int N=4; //définition de la taille des blocs pour la DCT
 
-  Insertion (img, N, p);
+	int p[3];  
+	p[0]=CV_IMWRITE_JPEG_QUALITY;
+	p[1]=100;
+	p[2]=0;
 
-  /** Détection de la marque et récupération du logo **/
 
-  detectionMarque(N);  //Détection des blocs marqués
-  
-  cvWaitKey(0);
-  cvDestroyAllWindows();
+	bloc=alocamd(N,N);                     // Allocation des blocs
+	blocT=alocamd(N,N);                    // Allocation des blocs transformés    
 
-  cvReleaseImage(&img);
-  cvReleaseImage(&Logo);
-  
-  dalocd(bloc,N);
-  dalocd(blocT,N);
+	if (strcmp(argv[3],"insertion") == 0)
+	{
+		/** Génération de la clef, de la marque, insertion du tatouage et enregistrement de l'image tatouée **/
 
-  freevi(posx);
-  freevi(posy);
-  freevd(key);  
-  
-  return EXIT_SUCCESS;
+		chargerImage(argv[1]);
+		chargerLogo(argc,argv[2]);
+		NWB=(Logo->width)*(Logo->height);
+		cvNamedWindow("Image source",CV_WINDOW_AUTOSIZE);
+		cvShowImage ("Image source",img); // affiche de imgHSV
+		Insertion (img, N, p);
+	}
+	else if (strcmp(argv[3],"detection") == 0)
+	{
+		/** Détection de la marque et récupération du logo **/
+
+		detectionMarque(N);  //Détection des blocs marqués
+	}
+
+	cvWaitKey(0);
+	cvDestroyAllWindows();
+
+	cvReleaseImage(&img);
+	cvReleaseImage(&Logo);
+
+	dalocd(bloc,N);
+	dalocd(blocT,N);
+
+	freevi(posx);
+	freevi(posy);
+	freevd(key);  
+
+	return EXIT_SUCCESS;
 
 }

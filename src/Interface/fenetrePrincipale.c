@@ -1,9 +1,8 @@
 #include "fenetrePrincipale.h"
 
 
-int lancementFenetrePrincipale(int argc, char *argv[])
+int lancementFenetrePrincipale()
 {
-	gtk_init(&argc, &argv);
 	/** 
 	  Création et affichage de la fenetre de selection qui apparaît après la fenetre de lancement
 	 */ 
@@ -19,11 +18,8 @@ int lancementFenetrePrincipale(int argc, char *argv[])
 	GtkWidget *afficherImage = NULL;
 	GtkWidget *afficherLogo = NULL;
 	GtkWidget *erreurImageOK = NULL;
-	GtkWidget *erreurLogoOK=NULL;
-	GtkWidget *sauvegardeImageOui=NULL;
-	GtkWidget *sauvegardeImageNon=NULL;
-	GtkFileFilter *filtre = gtk_file_filter_new ();
-	gchar directory[1024];
+	GtkWidget *erreurLogoOK = NULL;
+	GtkWidget *erreurDetectImageOK = NULL;
 
 	recuperationBuilder(builder);
 
@@ -44,8 +40,9 @@ int lancementFenetrePrincipale(int argc, char *argv[])
 	erreurLogo = GTK_WIDGET(gtk_builder_get_object(builder,"messagedialog2"));
 	erreurLogoOK = GTK_WIDGET(gtk_builder_get_object(builder,"buttonDialog2"));
 	sauvegardeImage = GTK_MESSAGE_DIALOG(gtk_builder_get_object(builder,"messagedialog3"));
-	sauvegardeImageOui = GTK_WIDGET(gtk_builder_get_object(builder,"oui_sauvegarder"));
-	sauvegardeImageNon = GTK_WIDGET(gtk_builder_get_object(builder,"non_sauvegarder"));
+	erreurDetectImage = GTK_WIDGET(gtk_builder_get_object(builder,"messagedialog5"));
+	erreurDetectImageOK = GTK_WIDGET(gtk_builder_get_object(builder,"buttonDialog3"));
+
 	
 
 	//On active les signaux nécessaires au déroulement de l'appli
@@ -61,8 +58,8 @@ int lancementFenetrePrincipale(int argc, char *argv[])
 	g_signal_connect (logoSearch, "file-set", G_CALLBACK(search_logo_file_set_cb), afficherLogo);
 	g_signal_connect (erreurImageOK, "clicked", G_CALLBACK(on_buttonDialog1_clicked), NULL);
 	g_signal_connect (erreurLogoOK, "clicked", G_CALLBACK(on_buttonDialog2_clicked), NULL);
+	g_signal_connect (erreurDetectImageOK, "clicked", G_CALLBACK(on_buttonDialog3_clicked), NULL);
 	g_signal_connect (erreurImage, "close", G_CALLBACK(on_buttonDialog1_clicked), NULL);
-	
 	
 
 
@@ -70,7 +67,7 @@ int lancementFenetrePrincipale(int argc, char *argv[])
 	gtk_window_set_resizable(GTK_WINDOW(mainWindow), FALSE);
 	gtk_window_set_position(GTK_WINDOW(mainWindow),GTK_WIN_POS_CENTER);
 
-	changeFilterAndDirectory(filtre, directory, imageSearch, logoSearch);
+	changeFilterAndDirectory(imageSearch, logoSearch, imageDetectSearch);
 
 
 

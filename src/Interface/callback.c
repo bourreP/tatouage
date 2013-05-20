@@ -48,11 +48,15 @@ void tatouer_clicked_cb ()
 { 
 	gchar* alphaValue;
 	gchar* deltaValue;
+	gchar *my_stderr = NULL;
+	gchar *my_stdout = NULL;
+	GError *my_error = NULL;
+	gint my_return_value;
 
-	alphaValue = g_strdup_printf("%lf",alpha);
-	deltaValue = g_strdup_printf("%lf",delta);
+	alphaValue = g_strdup_printf("%lf",alpha*100);
+	deltaValue = g_strdup_printf("%lf",delta*100);
 
-	char* const argv[]= {"./Tatouage", positionImage, positionLogo, "insertion", alphaValue, deltaValue};
+	char* argv[] = {"./Tatouage", positionImage, positionLogo, "insertion", alphaValue, deltaValue};
 
 	if (positionImage == NULL)
 	{
@@ -67,24 +71,48 @@ void tatouer_clicked_cb ()
 	else
 	{
 		system("mkdir Resultat 2> /dev/null");
-		execvp("./Tatouage",argv);
+		g_spawn_sync(NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, &my_stdout, &my_stderr, &my_return_value, &my_error);
 	}
 	g_free(alphaValue);
 	g_free(deltaValue);
+	if(my_stderr)
+		g_free(my_stderr);
+	if(my_stdout)
+		g_free(my_stdout);
+	if(my_error)
+		g_error_free(my_error);
 }
 
 void on_detecter_clicked()
 {
+	gchar *my_stderr = NULL;
+	gchar *my_stdout = NULL;
+	GError *my_error = NULL;
+	gint my_return_value;
 
-	//char* const argv[]= {"./Tatouage", positionImage, positionLogo, "detection"};
-	/*if(!gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (imageDetectSearch)))
+	positionImage = (gchar*) get_current_dir_name();
+
+	g_strconcat(positionImage, (gchar*) "Resultat/imageTatouee.jpg", NULL);
+
+	g_message("%s", g_file_test(positionImage, G_FILE_TEST_EXISTS));
+
+	if(!g_file_test(positionImage, G_FILE_TEST_EXISTS))
 	{
-		gtk_widget_show(erreurImage);
+		gtk_widget_show(erreurDetectImage);
 	}
-	else*/ gtk_widget_show(GTK_WIDGET(sauvegardeImage));	
-	
+	else
+	{
+		gtk_widget_show(GTK_WIDGET(sauvegardeImage));	
+		char* argv[]= {"./Tatouage", positionImage, positionLogo, "detection"};
+		g_spawn_sync(NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, &my_stdout, &my_stderr, &my_return_value, &my_error);
 
-	//execvp("./Tatouage",argv);
+	}
+	if(my_stderr)
+		g_free(my_stderr);
+	if(my_stdout)
+		g_free(my_stdout);
+	if(my_error)
+		g_error_free(my_error);
 }
 void on_buttonDialog1_clicked()
 {
@@ -94,4 +122,9 @@ void on_buttonDialog1_clicked()
 void on_buttonDialog2_clicked()
 {
 	gtk_widget_hide(erreurLogo);
+}
+
+void on_buttonDialog3_clicked()
+{
+	gtk_widget_hide(erreurDetectImage);
 }

@@ -2,6 +2,7 @@
 
 GtkWidget *erreurImage = NULL;
 GtkWidget *erreurLogo = NULL;
+GtkWidget *erreurDetectImage = NULL;
 GtkMessageDialog *sauvegardeImage=NULL;
 gchar* positionImage = NULL;
 gchar* positionLogo = NULL;
@@ -9,8 +10,11 @@ gchar* positionImageDetect=NULL;
 gdouble alpha = 0.72;
 gdouble delta = 115;
 
-void changeFilterAndDirectory (GtkFileFilter *filtre, gchar *directory, GtkWidget* imageSearch, GtkWidget* logoSearch)
+void changeFilterAndDirectory (GtkWidget* imageSearch, GtkWidget* logoSearch, GtkWidget* imageDetectSearch)
 {
+	GtkFileFilter *filtre = gtk_file_filter_new ();
+	gchar* directory = NULL;
+
 	directory = (gchar*) get_current_dir_name();
 
 	gtk_file_filter_add_pattern (filtre,"*.bmp");
@@ -21,6 +25,9 @@ void changeFilterAndDirectory (GtkFileFilter *filtre, gchar *directory, GtkWidge
 	gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (imageSearch),directory);
 	gtk_file_chooser_set_filter(GTK_FILE_CHOOSER(logoSearch),filtre);
 	gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (logoSearch),directory);
+	strcat(directory,"/Resultat");
+	gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (imageDetectSearch),directory);
+	gtk_file_chooser_set_filter(GTK_FILE_CHOOSER(imageDetectSearch),filtre);
 }
 
 void recuperationBuilder(GtkBuilder* builder)
