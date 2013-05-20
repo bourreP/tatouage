@@ -1,21 +1,5 @@
 #include "fonctions.h"
 
-void echanger ( int *px, int *py ) {
-
-  int aux = *px;
-
-  *px = *py;
-  *py = aux;
-}
-
-void echangerDouble ( double *x, double *y ) {
-
-  double aux = *x;
-
-  *x = *y;
-  *y = aux;
-}
-
 void calculPSNR (IplImage *img){
 
   int i,j;
@@ -45,28 +29,6 @@ void calculPSNR (IplImage *img){
   cvReleaseImage(&imgTat);
 
 }
-
-void triAbulles ( double *t,int *x,int *y,int N ) {
-
-  typedef enum { FAUX, VRAI } Booleen;  
-  int i = 0, j;
-  Booleen aucunEchange = FAUX;
-
-  while ( ( i<((img->height*img->width)/(N*N*5))-1 ) && !aucunEchange ) {
-  
-    aucunEchange = VRAI;
-
-    for ( j=((img->height*img->width)/(N*N*5))-1; j>i; j-- )
-      if ( t[j]>t[j-1] ) {
-	echangerDouble ( &t[j], &t[j-1] );
-	echanger(&x[j],&x[j-1]);
-	echanger(&y[j],&y[j-1]);
-	aucunEchange = FAUX;   
-   }
-    i++;   
-  }
-}
-
 
 void chargerImage (char *image){
 
@@ -156,70 +118,3 @@ void extractionCanalV (double **Mat, IplImage *imgHSV) {
   }
 }
 
-/** Insertion du tatouage **/
-
-void DCT (double **Mat, double **MTr, IplImage *imgHSV,int N){
-
-  int i,j;
-  int i0,j0;
-  double **blc;            // Bloc de 4x4 de M
-  double **blcT;           // Bloc 4x4 de MT, DCT de blocT
-
-  for(i=0; i<(imgHSV->width/N); i++){
-    for(j=0; j<(imgHSV->height/N); j++){
-
-      blc=alocamd(N,N);                     // Allocation des blocs
-      blcT=alocamd(N,N);                    // Allocation des blocs transformés
-
-      extractionBloc ( Mat, i*N, j*N,N, blc);      // Extraction des blocs
-      dct2dim (blc, blcT,N,N);              // Transformation des blocs
-
-      for(i0=0;i0<N;i0++)
-	for(j0=0;j0<N;j0++)
-	  MTr[N*i+i0][N*j+j0]=blcT[i0][j0];       // Implantation du bloc transformé dans MTr
-      dalocd(blc,N);
-      dalocd(blcT,N);
-    }
-  }
-}
-/*
-void DCTinv (double **Mat,double **MTr, double ** MFi, IplImage *imgHSV, IplImage *imgDCT,int N){
-
-  int i,j;
-  int i0,j0;
-  int k,l;
-  CvScalar v;                // Vecteur recevant le canal V de la future image transformée
-  double **blc;            // Bloc 4x4 de Mat transformé
-  double **blcT;           // Bloc 4x4 de MTr, DCT transformée de M4x4
-
- 
-  for(i=0; i<(imgHSV->width/N); i++){
-    for(j=0; j<(imgHSV->height/N); j++){
-      
-      blc=alocamd(N,N);
-      blcT=alocamd(N,N);
-      extractionBloc ( MTr, i*N, j*N, N, blcT);
-      dct2dim_inv (blcT, blc,N,N);
-      
-      for(i0=0; i0<N; i0++){
-	for(j0=0; j0<N; j0++){
-	  
-	  MFi[N*i+i0][N*j+j0]=blc[i0][j0];
-	}
-      }
-
-      dalocd (blc,N);
-      dalocd (blcT,N);
-    }
-  }
-  
-  for (k=0; k<imgHSV->width; k++) {
-    for (l=0; l<imgHSV->height; l++) {
- 
-      v=cvGet2D(imgHSV,l,k); 
-      v.val[2]=MFi[k][l];
-      cvSet2D (imgHSV,l,k,v); 
-    }
-  }
-}
-*/
