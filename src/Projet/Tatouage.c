@@ -39,8 +39,16 @@ int main (int argc, char **argv){
 	else if (strcmp(argv[3],"detection") == 0)
 	{
 		/** Détection de la marque et récupération du logo **/
-
+		chargerImage(argv[1]);
+		chargerLogo(argc,argv[2]);
+		NWB=(Logo->width)*(Logo->height);
 		detectionMarque(N);  //Détection des blocs marqués
+	}
+	else if (strcmp(argv[3],"attaquer") == 0)
+	{
+		chargerImage(argv[1]);
+		p[1] = strtof(argv[6], NULL)/100;
+		cvSaveImage ("Resultat/imageTatouee.jpg", img, p);
 	}
 
 	cvWaitKey(0);

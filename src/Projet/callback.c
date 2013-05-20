@@ -109,7 +109,7 @@ void on_attaquer_clicked()
 	}
 	else
 	{
-		char* argv[]= {"./Tatouage", "Resultat/imageSource.jpg", "Resultat/logoSource.jpg", "attaquer", alphaValue, deltaValue, compressionValue};
+		char* argv[]= {"./Tatouage", "Resultat/imageTatouee.jpg", "Resultat/logoSource.jpg", "attaquer", alphaValue, deltaValue, compressionValue};
 		g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, NULL);
 	}
 }
