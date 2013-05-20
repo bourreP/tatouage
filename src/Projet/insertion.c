@@ -1,5 +1,27 @@
 #include "insertion.h"
 
+void generationPar(int N,IplImage *img,IplImage *Logo){
+
+  int i;
+  srand(time(NULL));  
+
+  key=alocavd(NWB); // On génère aléatoirement les clefs ( entre 0 et 0,25 )
+  for(i=0;i<NWB;i++)
+    key[i]=(((double)rand()/(RAND_MAX))/4);
+  
+  logoToBin (Logo); // On convertie le logo en binaires, ce sera le message à tatouer
+
+  if ((KEY=fopen("Resultat/key.txt","w"))==NULL){
+    printf("Erreur ouverture fichier.\n");
+    exit (EXIT_FAILURE);
+  }
+
+  for (i=0;i<NWB;i++)
+    fprintf(KEY,"%f\n",key[i]);
+  fclose (KEY);
+
+}
+
 void selection(double **Mv,int N,IplImage *img){
 
   int i,j,z;
