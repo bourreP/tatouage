@@ -58,8 +58,14 @@ int lancementFenetrePrincipale()
 	g_signal_connect (logoSearch, "file-set", G_CALLBACK(search_logo_file_set_cb), afficherLogo);
 	g_signal_connect (erreurImageOK, "clicked", G_CALLBACK(on_buttonDialog1_clicked), NULL);
 	g_signal_connect (erreurLogoOK, "clicked", G_CALLBACK(on_buttonDialog2_clicked), NULL);
+<<<<<<< HEAD
 	g_signal_connect (erreurDetectImageOK, "clicked", G_CALLBACK(on_buttonDialog3_clicked), NULL);
 	g_signal_connect (erreurImage, "close", G_CALLBACK(on_buttonDialog1_clicked), NULL);
+=======
+	g_signal_connect (erreurImage, "delete-event", G_CALLBACK(on_buttonDialog1_clicked), NULL);
+	g_signal_connect (erreurLogo, "delete-event", G_CALLBACK(on_buttonDialog2_clicked), NULL);
+	g_signal_connect (sauvegardeImage, "delete-event", G_CALLBACK(gtk_widget_hide), NULL);
+>>>>>>> 21b60ced5bac709e7d11698d2094f756f8acbcb6
 	
 
 
