@@ -15,6 +15,13 @@
     <property name="step_increment">5</property>
     <property name="page_increment">10</property>
   </object>
+  <object class="GtkAdjustment" id="adjustment3">
+    <property name="lower">50</property>
+    <property name="upper">100</property>
+    <property name="value">100</property>
+    <property name="step_increment">5</property>
+    <property name="page_increment">10</property>
+  </object>
   <object class="GtkWindow" id="mainWindow">
     <property name="can_focus">False</property>
     <property name="default_width">450</property>
@@ -111,7 +118,8 @@
                             <property name="secondary_icon_activatable">False</property>
                             <property name="adjustment">adjustment1</property>
                             <property name="climb_rate">0.01</property>
-                            <property name="digits">2</property>
+                            <property name="digits">1</property>
+                            <property name="update_policy">if-valid</property>
                             <signal name="value-changed" handler="on_valeur_alpha_change_value" swapped="no"/>
                           </object>
                           <packing>
@@ -363,11 +371,11 @@
                     <property name="halign">center</property>
                     <property name="valign">end</property>
                     <property name="margin_top">50</property>
-                    <property name="label" translatable="yes">Choix d'attaque</property>
+                    <property name="label" translatable="yes">Choix des attaques:</property>
                   </object>
                   <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">False</property>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
                     <property name="position">0</property>
                   </packing>
                 </child>
@@ -377,13 +385,75 @@
                     <property name="can_focus">False</property>
                     <property name="homogeneous">True</property>
                     <child>
-                      <placeholder/>
+                      <object class="GtkLabel" id="label4">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Compression de l'image (en %):</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSpinButton" id="valeur_compression">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="invisible_char">•</property>
+                        <property name="adjustment">adjustment3</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">1</property>
+                      </packing>
                     </child>
                   </object>
                   <packing>
                     <property name="expand">True</property>
                     <property name="fill">True</property>
                     <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox" id="box2">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="homogeneous">True</property>
+                    <child>
+                      <object class="GtkLabel" id="label5">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">XPaint (il faut qu'il soit installé) :</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="xpaint">
+                        <property name="label" translatable="yes">	XPaint		</property>
+                        <property name="use_action_appearance">False</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="use_action_appearance">False</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="padding">25</property>
+                    <property name="position">2</property>
                   </packing>
                 </child>
                 <child>
@@ -403,7 +473,7 @@
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">True</property>
-                    <property name="position">2</property>
+                    <property name="position">3</property>
                   </packing>
                 </child>
               </object>
@@ -438,28 +508,12 @@
                     <property name="halign">center</property>
                     <property name="valign">end</property>
                     <property name="margin_top">30</property>
-                    <property name="label" translatable="yes">Sélection de la clé de l'image </property>
+                    <property name="label" translatable="yes"> Détecter le logo</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">False</property>
                     <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkFileChooserButton" id="search_image_detect">
-                    <property name="width_request">300</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="halign">center</property>
-                    <property name="valign">center</property>
-                    <property name="orientation">vertical</property>
-                    <signal name="file-set" handler="on_search_image_detect_file_set" swapped="no"/>
-                  </object>
-                  <packing>
-                    <property name="expand">True</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
                   </packing>
                 </child>
                 <child>
@@ -757,7 +811,7 @@
     <property name="opacity">0.99999999977648257</property>
     <property name="message_type">error</property>
     <property name="text" translatable="yes">ERREUR !</property>
-    <property name="secondary_text" translatable="yes">Veuillez sélectionner une image déjà tatouée</property>
+    <property name="secondary_text" translatable="yes">Veuillez tatouer une image</property>
     <child internal-child="vbox">
       <object class="GtkBox" id="messagedialog-vbox10">
         <property name="can_focus">False</property>

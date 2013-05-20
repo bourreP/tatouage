@@ -179,6 +179,8 @@ void Insertion (IplImage *img,int N,int *p){
 	cvNamedWindow("Image tatouée",CV_WINDOW_AUTOSIZE);
 	cvShowImage ("Image tatouée",imgTat);
 	cvSaveImage ("Resultat/imageTatouee.jpg", imgTat, p);
+	cvSaveImage ("Resultat/imageSource.jpg", img, p);
+	cvSaveImage ("Resultat/logoSource.jpg", Logo, p);
 
 	calculPSNR(img);
 

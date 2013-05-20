@@ -56,12 +56,18 @@ void markToLogo (IplImage *Logo){
       cvSet2D(LogRec,j,i,s);
       //      printf("Allooooo quoi !\n");
     }
-  
+
+  int p[3];
+  p[0]=CV_IMWRITE_JPEG_QUALITY;
+  p[1]=100;
+  p[2]=0;
+
   fclose(MarkDet);
   cvNamedWindow("Logo initial",CV_WINDOW_AUTOSIZE);
   cvShowImage ("Logo initial",Logo); // affiche de imgHSV
   cvNamedWindow("Logo récupéré",CV_WINDOW_AUTOSIZE);
   cvShowImage ("Logo récupéré",LogRec); // affiche de imgHSV
+  cvSaveImage ("Resultat/logoTatouee.jpg", Logo, p);
   dalocd(mat,Logo->width);
   cvReleaseImage(&LogRec);
 }

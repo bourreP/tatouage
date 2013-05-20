@@ -1,15 +1,4 @@
 #include "fonctions.h"
-/*
-#include <stdio.h> 
-#include "matrix.h"
-#include <math.h>
-#include <highgui.h>//<opencv/highgui.h>
-#include <cv.h>//<opencv/cv.h>
-#include "dct.h"
-#include "global.h"
-#include <time.h>
-#include "logoMark.h"
-*/
 
 void echanger ( int *px, int *py ) {
 
@@ -38,7 +27,7 @@ void calculPSNR (IplImage *img){
   CvScalar v;
   CvScalar s;
   IplImage *imgTat;
-  imgTat=cvLoadImage("Resultat/imageTatouee.jpg",1);
+  imgTat= (IplImage* ) cvLoadImage("Resultat/imageTatouee.jpg",1);
 
   for (i=0;i<img->width;i++)
     for (j=0;j<img->height;j++){
@@ -82,9 +71,9 @@ void triAbulles ( double *t,int *x,int *y,int N ) {
 void chargerImage (char *image){
 
   if (image==NULL)
-    img=cvLoadImage("./ImagesTest/source.jpg",1);
+    img= (IplImage*) cvLoadImage("./ImagesTest/source.jpg",1);
   else
-    img=cvLoadImage(image,1);
+    img= (IplImage*) cvLoadImage(image,1);
 
   if(img->height>2000 || img->height<200 || img->width>2000 || img->width<200){
     printf("Veuillez choisir une image entre 200x200pixels et 2000x2000pixels.\n");
@@ -95,9 +84,9 @@ void chargerImage (char *image){
 void chargerLogo (int arg, char *logo){
 
   if (arg<2)
-    Logo=cvLoadImage ("./LogosTest/logo.png",0);
+    Logo= (IplImage*) cvLoadImage ("./LogosTest/logo.png",0);
   else
-    Logo=cvLoadImage (logo,0); 
+    Logo= (IplImage*) cvLoadImage (logo,0); 
 
   if(Logo->height<16 || Logo->height>48 || Logo->width<16 ||Logo->width>48){
     printf("Veuillez choisir un logo entre 16x16pixels et 48x48pixels.\n");

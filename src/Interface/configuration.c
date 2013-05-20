@@ -9,8 +9,9 @@ gchar* positionLogo = NULL;
 gchar* positionImageDetect=NULL;
 gdouble alpha = 0.72;
 gdouble delta = 115;
+gdouble compression = 100;
 
-void changeFilterAndDirectory (GtkWidget* imageSearch, GtkWidget* logoSearch, GtkWidget* imageDetectSearch)
+void changeFilterAndDirectory (GtkWidget* imageSearch, GtkWidget* logoSearch)
 {
 	GtkFileFilter *filtre = gtk_file_filter_new ();
 	gchar* directory = NULL;
@@ -25,9 +26,6 @@ void changeFilterAndDirectory (GtkWidget* imageSearch, GtkWidget* logoSearch, Gt
 	gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (imageSearch),directory);
 	gtk_file_chooser_set_filter(GTK_FILE_CHOOSER(logoSearch),filtre);
 	gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (logoSearch),directory);
-	strcat(directory,"/Resultat");
-	gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (imageDetectSearch),directory);
-	gtk_file_chooser_set_filter(GTK_FILE_CHOOSER(imageDetectSearch),filtre);
 }
 
 void recuperationBuilder(GtkBuilder* builder)

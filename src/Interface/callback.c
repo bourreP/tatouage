@@ -26,6 +26,11 @@ void on_valeur_alpha_change_value(GtkSpinButton *valeurAlpha, gdouble* alpha)
 	*alpha = gtk_spin_button_get_value(valeurAlpha);
 }
 
+void on_valeur_compression_change_value(GtkSpinButton *valeurCompression, gdouble* compression)
+{
+	*compression = gtk_spin_button_get_value(valeurCompression);
+}
+
 void search_image_file_set_cb(GtkWidget *buttonImage, GtkImage *afficherImage)
 {
 	GdkPixbuf *pixbuf;
@@ -48,10 +53,6 @@ void tatouer_clicked_cb ()
 { 
 	gchar* alphaValue;
 	gchar* deltaValue;
-	gchar *my_stderr = NULL;
-	gchar *my_stdout = NULL;
-	GError *my_error = NULL;
-	gint my_return_value;
 
 	alphaValue = g_strdup_printf("%lf",alpha*100);
 	deltaValue = g_strdup_printf("%lf",delta*100);
@@ -71,46 +72,62 @@ void tatouer_clicked_cb ()
 	else
 	{
 		system("mkdir Resultat 2> /dev/null");
-		g_spawn_sync(NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, &my_stdout, &my_stderr, &my_return_value, &my_error);
+		g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, NULL);
 	}
-	g_free(alphaValue);
-	g_free(deltaValue);
-	if(my_stderr)
-		g_free(my_stderr);
-	if(my_stdout)
-		g_free(my_stdout);
-	if(my_error)
-		g_error_free(my_error);
 }
 
 void on_detecter_clicked()
 {
-	gchar *my_stderr = NULL;
-	gchar *my_stdout = NULL;
-	GError *my_error = NULL;
-	gint my_return_value;
+	gchar* alphaValue;
+	gchar* deltaValue;
+	alphaValue = g_strdup_printf("%lf",alpha*100);
+	deltaValue = g_strdup_printf("%lf",delta*100);
 
-	positionImage = (gchar*) get_current_dir_name();
-
-	g_strconcat(positionImage, (gchar*) "Resultat/imageTatouee.jpg", NULL);
-
-	if(!g_file_test(positionImage, G_FILE_TEST_EXISTS))
+	if(!g_file_test("Resultat/imageTatouee.jpg", G_FILE_TEST_EXISTS))
 	{
 		gtk_widget_show(erreurDetectImage);
 	}
 	else
 	{
-		char* argv[]= {"./Tatouage", positionImage, positionLogo, "detection"};
-		g_spawn_sync(NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, &my_stdout, &my_stderr, &my_return_value, &my_error);
-
+		char* argv[]= {"./Tatouage", "Resultat/imageSource.jpg", "Resultat/logoSource.jpg", "detection", alphaValue, deltaValue};
+		g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, NULL);
 	}
-	if(my_stderr)
-		g_free(my_stderr);
-	if(my_stdout)
-		g_free(my_stdout);
-	if(my_error)
-		g_error_free(my_error);
 }
+
+void on_attaquer_clicked()
+{
+	gchar* alphaValue;
+	gchar* deltaValue;
+	gchar* compressionValue;
+	alphaValue = g_strdup_printf("%lf",alpha*100);
+	deltaValue = g_strdup_printf("%lf",delta*100);
+	compressionValue = g_strdup_printf("%lf",compression*100);
+
+	if(!g_file_test("Resultat/imageTatouee.jpg", G_FILE_TEST_EXISTS))
+	{
+		gtk_widget_show(erreurDetectImage);
+	}
+	else
+	{
+		char* argv[]= {"./Tatouage", "Resultat/imageSource.jpg", "Resultat/logoSource.jpg", "attaquer", alphaValue, deltaValue, compressionValue};
+		g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, NULL);
+	}
+}
+
+void on_xpaint_clicked()
+{
+	if(!g_file_test("Resultat/imageTatouee.jpg", G_FILE_TEST_EXISTS))
+	{
+		gtk_widget_show(erreurDetectImage);
+	}
+	else
+	{
+		char* argv[]= {"xpaint", "Resultat/imageTatouee.jpg"};
+		g_spawn_sync (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, NULL, NULL, NULL);
+	}
+
+}
+
 void on_buttonDialog1_clicked()
 {
 	gtk_widget_hide(erreurImage);

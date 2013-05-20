@@ -14,8 +14,9 @@ gchar* positionImageDetect;
 
 gdouble alpha;
 gdouble delta;
+gdouble compression;
 
 void recuperationBuilder(GtkBuilder* builder);
-void changeFilterAndDirectory (GtkWidget* imageSearch, GtkWidget* logoSearch, GtkWidget* imageDetectSearch);
+void changeFilterAndDirectory (GtkWidget* imageSearch, GtkWidget* logoSearch);
 
 #endif
