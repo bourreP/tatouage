@@ -9,7 +9,7 @@
 #include "detection.h"
 #include "matrix.h"
 
-int main (int argc, char **argv){
+void main (int argc, char **argv){
 
 	a = strtof(argv[4], NULL)/100;
 	pas = strtof(argv[5], NULL)/100;
