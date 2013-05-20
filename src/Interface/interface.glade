@@ -522,7 +522,7 @@
     <property name="text" translatable="yes">ERREUR !</property>
     <property name="secondary_text" translatable="yes">Veuillez sélectionner une image</property>
     <signal name="close" handler="on_buttonDialog1_clicked" swapped="no"/>
-    <signal name="delete-event" handler="on_buttonDialog1_clicked" swapped="no"/>
+    <signal name="destroy" handler="on_buttonDialog1_clicked" swapped="no"/>
     <child internal-child="vbox">
       <object class="GtkBox" id="messagedialog-vbox">
         <property name="width_request">400</property>
@@ -570,27 +570,23 @@
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
     <property name="resizable">False</property>
-    <property name="default_width">400</property>
-    <property name="default_height">150</property>
     <property name="type_hint">dialog</property>
     <property name="skip_taskbar_hint">True</property>
     <property name="opacity">0.99999999977648257</property>
     <property name="message_type">error</property>
     <property name="text" translatable="yes">ERREUR !</property>
-    <property name="secondary_text" translatable="yes">Veuillez sélectionner une image</property>
-    <signal name="close" handler="on_buttonDialog2_clicked" swapped="no"/>
-    <signal name="delete-event" handler="on_buttonDialog2_clicked" swapped="no"/>
+    <property name="secondary_text" translatable="yes">Veuillez sélectionner un logo</property>
+    <signal name="close" handler="gtk_widget_hide" swapped="no"/>
     <child internal-child="vbox">
-      <object class="GtkBox" id="messagedialog-vbox9">
+      <object class="GtkBox" id="messagedialog-vbox4">
         <property name="width_request">400</property>
         <property name="height_request">100</property>
         <property name="can_focus">False</property>
         <property name="valign">center</property>
         <property name="orientation">vertical</property>
         <property name="spacing">2</property>
-        <signal name="destroy" handler="on_buttonDialog2_clicked" swapped="no"/>
         <child internal-child="action_area">
-          <object class="GtkButtonBox" id="messagedialog-action_area9">
+          <object class="GtkButtonBox" id="messagedialog-action_area4">
             <property name="can_focus">False</property>
             <property name="layout_style">center</property>
             <child>
@@ -601,6 +597,7 @@
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_action_appearance">False</property>
+                <signal name="clicked" handler="on_buttonDialog2_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -631,8 +628,6 @@
     <property name="message_type">question</property>
     <property name="text" translatable="yes">Voulez-vous sauvegarder cette image ?</property>
     <property name="secondary_text" translatable="yes"> </property>
-    <signal name="destroy-event" handler="gtk_widget_hide" swapped="no"/>
-    <signal name="delete-event" handler="gtk_widget_hide" swapped="no"/>
     <child internal-child="vbox">
       <object class="GtkBox" id="messagedialog-vbox5">
         <property name="can_focus">False</property>
