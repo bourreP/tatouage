@@ -53,6 +53,7 @@ void tatouer_clicked_cb ()
 { 
 	gchar* alphaValue;
 	gchar* deltaValue;
+	GError *error = NULL;
 
 	alphaValue = g_strdup_printf("%lf",alpha*100);
 	deltaValue = g_strdup_printf("%lf",delta*100);
@@ -72,14 +73,16 @@ void tatouer_clicked_cb ()
 	else
 	{
 		system("mkdir Resultat 2> /dev/null");
-		g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, NULL);
+		g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, &error);
 	}
+
 }
 
 void on_detecter_clicked()
 {
 	gchar* alphaValue;
 	gchar* deltaValue;
+	GError *error = NULL;
 	alphaValue = g_strdup_printf("%lf",alpha*100);
 	deltaValue = g_strdup_printf("%lf",delta*100);
 
@@ -90,7 +93,7 @@ void on_detecter_clicked()
 	else
 	{
 		char* argv[]= {"./Tatouage", "Resultat/imageSource.jpg", "Resultat/logoSource.jpg", "detection", alphaValue, deltaValue};
-		g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, NULL);
+		g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, &error);
 	}
 }
 
@@ -99,6 +102,7 @@ void on_attaquer_clicked()
 	gchar* alphaValue;
 	gchar* deltaValue;
 	gchar* compressionValue;
+	GError *error = NULL;
 	alphaValue = g_strdup_printf("%lf",alpha*100);
 	deltaValue = g_strdup_printf("%lf",delta*100);
 	compressionValue = g_strdup_printf("%lf",compression*100);
@@ -110,12 +114,16 @@ void on_attaquer_clicked()
 	else
 	{
 		char* argv[]= {"./Tatouage", "Resultat/imageTatouee.jpg", "Resultat/logoSource.jpg", "attaquer", alphaValue, deltaValue, compressionValue};
-		g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, NULL);
+		g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, &error);
 	}
 }
 
 void on_xpaint_clicked()
 {
+	GError *error = NULL;
+	gchar *standard_output = NULL;
+	gchar *standard_error = NULL;
+	gint *exit_status = NULL;
 	if(!g_file_test("Resultat/imageTatouee.jpg", G_FILE_TEST_EXISTS))
 	{
 		gtk_widget_show(erreurDetectImage);
@@ -123,7 +131,7 @@ void on_xpaint_clicked()
 	else
 	{
 		char* argv[]= {"xpaint", "Resultat/imageTatouee.jpg"};
-		g_spawn_sync (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, NULL, NULL, NULL);
+		g_spawn_sync (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, &standard_output, &standard_error, exit_status, &error);
 	}
 
 }
