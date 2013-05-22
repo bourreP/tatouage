@@ -10,6 +10,7 @@
 
 int main (int argc, char **argv){
 
+	system("mkdir Resultat 2> /dev/null");
 	printf ("#########################################################################\n");
 	printf ("#			TEST DU CHARGEMENT DE L'IMAGE			#\n");
 	printf ("#########################################################################\n");
