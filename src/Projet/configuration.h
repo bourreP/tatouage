@@ -7,6 +7,8 @@
 GtkWidget* erreurImage;
 GtkWidget* erreurLogo;
 GtkWidget *erreurDetectImage;
+GtkWidget *afficherLogoSource;
+GtkWidget *afficherLogoRecupere;
 GtkMessageDialog* sauvegardeImage;
 gchar* positionImage;
 gchar* positionLogo;

@@ -164,7 +164,6 @@
                     <child>
                       <object class="GtkButton" id="tatouer">
                         <property name="label" translatable="yes">Tatouer</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="width_request">150</property>
                         <property name="height_request">40</property>
                         <property name="visible">True</property>
@@ -176,7 +175,6 @@
                         <property name="margin_right">5</property>
                         <property name="margin_top">5</property>
                         <property name="margin_bottom">5</property>
-                        <property name="use_action_appearance">False</property>
                         <signal name="clicked" handler="tatouer_clicked_cb" swapped="no"/>
                       </object>
                       <packing>
@@ -436,11 +434,9 @@
                     <child>
                       <object class="GtkButton" id="xpaint">
                         <property name="label" translatable="yes">	XPaint		</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <property name="use_action_appearance">False</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -459,7 +455,6 @@
                 <child>
                   <object class="GtkButton" id="attaquer">
                     <property name="label" translatable="yes">Attaquer</property>
-                    <property name="use_action_appearance">False</property>
                     <property name="width_request">110</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
@@ -467,7 +462,6 @@
                     <property name="halign">center</property>
                     <property name="valign">center</property>
                     <property name="margin_bottom">50</property>
-                    <property name="use_action_appearance">False</property>
                     <signal name="clicked" handler="on_attaquer_clicked" swapped="no"/>
                   </object>
                   <packing>
@@ -519,20 +513,88 @@
                 <child>
                   <object class="GtkButton" id="detecter">
                     <property name="label" translatable="yes">Détecter</property>
-                    <property name="use_action_appearance">False</property>
                     <property name="width_request">110</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="receives_default">False</property>
                     <property name="halign">center</property>
                     <property name="margin_bottom">50</property>
-                    <property name="use_action_appearance">False</property>
                     <signal name="clicked" handler="on_detecter_clicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">False</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox" id="box5">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <child>
+                      <object class="GtkLabel" id="label10">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Logo Source:</property>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="label11">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Logo Récupéré:</property>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
                     <property name="position">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox" id="box4">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <child>
+                      <object class="GtkImage" id="logoSource">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="stock">gtk-missing-image</property>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkImage" id="logoRecupere">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="stock">gtk-missing-image</property>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">3</property>
                   </packing>
                 </child>
               </object>
@@ -593,11 +655,9 @@
             <child>
               <object class="GtkButton" id="buttonDialog1">
                 <property name="label" translatable="yes">OK</property>
-                <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="use_action_appearance">False</property>
                 <signal name="clicked" handler="on_buttonDialog1_clicked" swapped="no"/>
               </object>
               <packing>
@@ -646,11 +706,9 @@
             <child>
               <object class="GtkButton" id="buttonDialog2">
                 <property name="label" translatable="yes">OK</property>
-                <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="use_action_appearance">False</property>
                 <signal name="clicked" handler="on_buttonDialog2_clicked" swapped="no"/>
               </object>
               <packing>
@@ -695,11 +753,9 @@
             <child>
               <object class="GtkButton" id="oui_sauvegarder">
                 <property name="label" translatable="yes">Oui</property>
-                <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="use_action_appearance">False</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -710,11 +766,9 @@
             <child>
               <object class="GtkButton" id="non_sauvegarder">
                 <property name="label" translatable="yes">Non</property>
-                <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
-                <property name="use_action_appearance">False</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -758,11 +812,9 @@
             <child>
               <object class="GtkButton" id="oui_sauvegarder1">
                 <property name="label" translatable="yes">Oui</property>
-                <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="use_action_appearance">False</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -773,11 +825,9 @@
             <child>
               <object class="GtkButton" id="non_sauvegarder1">
                 <property name="label" translatable="yes">Non</property>
-                <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="use_action_appearance">False</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -825,11 +875,9 @@
             <child>
               <object class="GtkButton" id="buttonDialog3">
                 <property name="label" translatable="yes">OK</property>
-                <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="use_action_appearance">False</property>
                 <signal name="clicked" handler="on_buttonDialog3_clicked" swapped="no"/>
               </object>
               <packing>

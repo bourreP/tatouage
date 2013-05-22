@@ -3,6 +3,8 @@
 GtkWidget *erreurImage = NULL;
 GtkWidget *erreurLogo = NULL;
 GtkWidget *erreurDetectImage = NULL;
+GtkWidget *afficherLogoSource = NULL;
+GtkWidget *afficherLogoRecupere = NULL;
 GtkMessageDialog *sauvegardeImage=NULL;
 gchar* positionImage = NULL;
 gchar* positionLogo = NULL;
@@ -14,9 +16,9 @@ gdouble compression = 100;
 void changeFilterAndDirectory (GtkWidget* imageSearch, GtkWidget* logoSearch)
 {
 	GtkFileFilter *filtre = gtk_file_filter_new ();
-	gchar* directory = NULL;
+	char* directory = NULL;
 
-	directory = (gchar*) get_current_dir_name();
+	directory = (char*) get_current_dir_name();
 
 	gtk_file_filter_add_pattern (filtre,"*.bmp");
 	gtk_file_filter_add_pattern (filtre,"*.jpg"); // on peut charger des images jpg  

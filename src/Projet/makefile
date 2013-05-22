@@ -11,7 +11,7 @@ Lancement: main.o callback.o configuration.o fenetrePrincipale.o
 	$(CC) -o Lancement callback.o configuration.o fenetrePrincipale.o main.o $(LFLAGSGTK)
 
 Tatouage: Tatouage.o dct.o matrix.o logoMark.o insertion.o detection.o fonctions.o
-	$(CC) -o Tatouage Tatouage.o dct.o matrix.o logoMark.o insertion.o detection.o fonctions.o $(LFLAGSCV)
+	$(CC) -o Tatouage Tatouage.o dct.o matrix.o logoMark.o insertion.o detection.o fonctions.o $(LFLAGSCV) -lm
 
 main.o: main.c
 	$(CC) -c main.c $(CFLAGSGTK)
@@ -38,7 +38,7 @@ logoMark.o: logoMark.c logoMark.h
 	$(CC) -c logoMark.c $(CFLAGSCV)
 
 insertion.o: insertion.c insertion.h
-	$(CC) -c insertion.c $(CFLAGSCV)
+	$(CC) -c insertion.c $(CFLAGSCV) -lm
 
 detection.o: detection.c detection.h
 	$(CC) -c detection.c $(CFLAGSCV)

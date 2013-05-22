@@ -39,6 +39,8 @@ int lancementFenetrePrincipale()
 	logoSearch = GTK_WIDGET(gtk_builder_get_object(builder,"search_logo"));
 	afficherImage = GTK_WIDGET(gtk_builder_get_object(builder,"image"));
 	afficherLogo = GTK_WIDGET(gtk_builder_get_object(builder,"logo"));
+	afficherLogoSource = GTK_WIDGET(gtk_builder_get_object(builder,"logoSource"));
+	afficherLogoRecupere = GTK_WIDGET(gtk_builder_get_object(builder,"logoRecupere"));
 	erreurImage = GTK_WIDGET(gtk_builder_get_object(builder,"messagedialog1"));
 	erreurImageOK = GTK_WIDGET(gtk_builder_get_object(builder,"buttonDialog1"));
 	erreurLogo = GTK_WIDGET(gtk_builder_get_object(builder,"messagedialog2"));

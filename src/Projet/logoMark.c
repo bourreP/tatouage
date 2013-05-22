@@ -63,11 +63,8 @@ void markToLogo (IplImage *Logo){
   p[2]=0;
 
   fclose(MarkDet);
-  cvNamedWindow("Logo initial",CV_WINDOW_AUTOSIZE);
-  cvShowImage ("Logo initial",Logo); // affiche de imgHSV
-  cvNamedWindow("Logo récupéré",CV_WINDOW_AUTOSIZE);
-  cvShowImage ("Logo récupéré",LogRec); // affiche de imgHSV
-  cvSaveImage ("Resultat/logoTatouee.jpg", Logo, p);
+  cvSaveImage ("Resultat/logoSource.jpg", Logo, p);
+  cvSaveImage ("Resultat/logoRecupere.jpg", LogRec, p);
   dalocd(mat,Logo->width);
   cvReleaseImage(&LogRec);
 }

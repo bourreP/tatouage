@@ -82,6 +82,8 @@ void on_detecter_clicked()
 {
 	gchar* alphaValue;
 	gchar* deltaValue;
+	GdkPixbuf *logoSource;
+	GdkPixbuf *logoRecupere;
 	GError *error = NULL;
 	alphaValue = g_strdup_printf("%lf",alpha*100);
 	deltaValue = g_strdup_printf("%lf",delta*100);
@@ -94,6 +96,14 @@ void on_detecter_clicked()
 	{
 		char* argv[]= {"./Tatouage", "Resultat/imageSource.jpg", "Resultat/logoSource.jpg", "detection", alphaValue, deltaValue};
 		g_spawn_async (NULL, argv, NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, &error);
+
+		logoSource = gdk_pixbuf_new_from_file("Resultat/logoSource.jpg",NULL);
+		logoSource = gdk_pixbuf_scale_simple(logoSource,100,100,GDK_INTERP_BILINEAR);
+		gtk_image_set_from_pixbuf((GtkImage* ) afficherLogoSource, logoSource); 
+
+		logoRecupere = gdk_pixbuf_new_from_file("Resultat/logoRecupere.jpg",NULL);
+		logoRecupere = gdk_pixbuf_scale_simple(logoRecupere,100,100,GDK_INTERP_BILINEAR);
+		gtk_image_set_from_pixbuf((GtkImage* ) afficherLogoRecupere, logoRecupere);
 	}
 }
 
